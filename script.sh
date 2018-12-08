@@ -16,15 +16,14 @@ fi
 if [ -z "$PLUGIN_DIR" ] ; then
     echo "> Error! dir not defined"
     exit 1
-fi
-
-if [ "$PLUGIN_PRODUCTION" = "yes" ] ; then
-    PROD="--prod"
-fi
-    
+fi 
 
 if [ -n "$PLUGIN_MESSAGE" ] ; then
     netlify deploy --auth $PLUGIN_NETLIFY_AUTH_TOKEN --site $PLUGIN_NETLIFY_SITE_ID --dir $PLUGIN_DIR --message $PLUGIN_MESSAGE $PROD
 else
     netlify deploy --auth $PLUGIN_NETLIFY_AUTH_TOKEN --site $PLUGIN_NETLIFY_SITE_ID --dir $PLUGIN_DIR $PROD
+fi
+
+if [ "$PLUGIN_PRODUCTION" = "yes" ] ; then
+    netlify deploy --prod
 fi
