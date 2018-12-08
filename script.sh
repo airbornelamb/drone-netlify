@@ -13,10 +13,9 @@ then
     exit 1
 fi
 
-if [ -z "$PLUGIN_NETLIFY_SITE_ID" ]
+if [ -n "$PLUGIN_MESSAGE" ]
 then
-    echo "> Error! NETLIFY_SITE_ID not defined"
-    exit 1
+    netlify deploy --auth $PLUGIN_NETLIFY_AUTH_TOKEN --site $PLUGIN_NETLIFY_SITE_ID --message $PLUGIN_MESSAGE
+else
+    netlify deploy --auth $PLUGIN_NETLIFY_AUTH_TOKEN --site $PLUGIN_NETLIFY_SITE_ID
 fi
-
-netlify deploy
