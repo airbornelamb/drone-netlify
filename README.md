@@ -13,6 +13,7 @@ steps:
     netlify_auth_token:
       from_secret: DRONENAMEDSECRET
     netlify_site_id: xxxxx-xxxx-xxxx
+    message: "Yay I uploaded" # Optional deploy message
 
 ```
 
@@ -27,4 +28,5 @@ steps:
   settings:
     netlify_auth_token: xxxxx-xxxx-xxxx
     netlify_site_id: xxxxx-xxxx-xxxx
+    message: "Yay I uploaded" # Optional deploy message
 ```
