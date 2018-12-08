@@ -15,7 +15,7 @@ steps:
     netlify_site_id: xxxxx-xxxx-xxxx
     dir: /drone/src/_site # path must be defined, this is _site for Jekyll
     message: "Yay I uploaded" # Optional deploy message
-
+    production: yes #If yes, will deploy live. If otherwise, will deploy to preview branch
 ```
 
 Other method where the secret is passed.
@@ -31,4 +31,5 @@ steps:
     netlify_site_id: xxxxx-xxxx-xxxx
     dir: /drone/src/_site # path must be defined, this is _site for Jekyll
     message: "Yay I uploaded" # Optional deploy message
+    production: yes #If yes, will deploy live. If otherwise, will deploy to preview branch
 ```
