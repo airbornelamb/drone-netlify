@@ -13,6 +13,7 @@ steps:
     netlify_auth_token:
       from_secret: DRONENAMEDSECRET
     netlify_site_id: xxxxx-xxxx-xxxx
+    dir: /drone/src/_site # path must be defined, this is _site for Jekyll
     message: "Yay I uploaded" # Optional deploy message
 
 ```
@@ -28,5 +29,6 @@ steps:
   settings:
     netlify_auth_token: xxxxx-xxxx-xxxx
     netlify_site_id: xxxxx-xxxx-xxxx
+    dir: /drone/src/_site # path must be defined, this is _site for Jekyll
     message: "Yay I uploaded" # Optional deploy message
 ```
