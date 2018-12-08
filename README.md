@@ -9,8 +9,8 @@ steps:
 - name: netlify
   image: airbornelamb/drone-netlify
   settings:
-    NETLIFY_AUTH_TOKEN:
+    netlify_auth_token:
       from_secret: xxxxx-xxxx-xxxx
-    NETLIFY_SITE_ID:
+    netlify_site_id:
       from_secret: xxxxx-xxxx-xxxx
 ```
