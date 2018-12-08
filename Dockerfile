@@ -1,8 +1,9 @@
-FROM node:10-alpine
-
-RUN npm install netlify-cli -g
+FROM node:alpine
 
 ADD script.sh /bin/
-RUN chmod +x /bin/script.sh
+
+RUN set -xe \
+    && npm install netlify-cli -g \
+    && chmod +x /bin/script.sh
 
 ENTRYPOINT /bin/script.sh
