@@ -2,28 +2,13 @@
 set -e
 
 PROD=""
+MESSAGE=""
 
-if [ -z "$PLUGIN_NETLIFY_AUTH_TOKEN" ] ; then
-    echo "> Error! netlify_auth_token not defined"
-    exit 1
-fi
+[ -n "$PLUGIN_PRODUCTION" ] && PROD="--prod"
+[ -n "$PLUGIN_MESSAGE" ] && MESSAGE="--message $PLUGIN_MESSAGE"
 
-if [ -z "$PLUGIN_NETLIFY_SITE_ID" ] ; then
-    echo "> Error! netlify_site_id not defined"
-    exit 1
-fi
+[ -z "$PLUGIN_NETLIFY_AUTH_TOKEN" ] && { echo "> Error! netlify_auth_token not defined" ; exit 1; }
+[ -z "$PLUGIN_NETLIFY_SITE_ID" ] && { echo "> Error! netlify_site_id not defined" ; exit 1; }
+[ -z "$PLUGIN_DIR" ] && { echo "> Error! dir not defined" ; exit 1; }
 
-if [ -z "$PLUGIN_DIR" ] ; then
-    echo "> Error! dir not defined"
-    exit 1
-fi 
-
-if [ -n "$PLUGIN_MESSAGE" ] ; then
-    netlify deploy --auth $PLUGIN_NETLIFY_AUTH_TOKEN --site $PLUGIN_NETLIFY_SITE_ID --dir $PLUGIN_DIR --message $PLUGIN_MESSAGE $PROD
-else
-    netlify deploy --auth $PLUGIN_NETLIFY_AUTH_TOKEN --site $PLUGIN_NETLIFY_SITE_ID --dir $PLUGIN_DIR $PROD
-fi
-
-if [ "$PLUGIN_PRODUCTION" = "yes" ] ; then
-    netlify deploy --prod
-fi
+netlify deploy $PROD --auth $PLUGIN_NETLIFY_AUTH_TOKEN --site $PLUGIN_NETLIFY_SITE_ID --dir $PLUGIN_DIR $MESSAGE
