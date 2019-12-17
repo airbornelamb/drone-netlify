@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:13.3-alpine
 
 ADD script.sh /bin/
 
